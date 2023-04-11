@@ -1,6 +1,6 @@
 package datekeeper.datekeeperbackend.controllers;
 
-import datekeeper.datekeeperbackend.services.CalendarServerice;
+import datekeeper.datekeeperbackend.services.CalendarService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class RESTController {
     @Autowired
-    CalendarServerice calendarServerice;
+    CalendarService calendarService;
 
     @GetMapping("/ping")
     public String ping() {

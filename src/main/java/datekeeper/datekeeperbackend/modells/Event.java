@@ -2,11 +2,19 @@ package datekeeper.datekeeperbackend.modells;
 
 import java.time.LocalDate;
 
+// TODO add @Entity annotation here, requires JPA
+
+/***
+ * Event
+ * Represents a single event in a calendar.
+ * Has id, title, description and date.
+ */
 public class Event {
-    // Simple structure representing an event
-    String title = "";
-    String description = "";
-    LocalDate eventDate;
+    // TODO add @Id annotation, requires JPA
+    private Long id;
+    private String title = "";
+    private String description = "";
+    private LocalDate eventDate;
 
     public Event(int day, int month, int year, String title, String description) {
         this.title = title;
