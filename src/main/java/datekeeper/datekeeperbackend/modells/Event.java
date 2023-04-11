@@ -1,4 +1,4 @@
-package datekeeper.datekeeperbackend.domain;
+package datekeeper.datekeeperbackend.modells;
 
 import java.time.LocalDate;
 
