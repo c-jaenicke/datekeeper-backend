@@ -23,3 +23,6 @@ gradle-app.setting
 # JDT-specific (Eclipse Java Development Tools)
 .classpath
 
+# h2 database
+*.mv.db
+*.trace.db
