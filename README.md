@@ -18,10 +18,14 @@ Ein Kalender zum eintragen von Terminen und Events.
 /ping
 /events
 /event/{id}
-/json-new
 /new
+/new-simple
 /event/{id}/delete
 /event/{id}/update
 ```
 
 Stand 11.06.2023
+
+## TESTING
+
+In der `./src/main/resources/` den Pfad der H2 Datenbank anpassen!

@@ -25,7 +25,7 @@ public class Event {
     private String description = "";
     private LocalDate eventDate;
 
-    static DateTimeFormatter formatter = new DateTimeFormatterBuilder()
+    private static final DateTimeFormatter formatter = new DateTimeFormatterBuilder()
             .appendOptional(DateTimeFormatter.ofPattern("yyyy-M-d")).toFormatter();
 
     public Event() {
@@ -67,8 +67,8 @@ public class Event {
         return eventDate.toString();
     }
 
-    public void setEventDate(int day, int month, int year) {
-        this.eventDate = LocalDate.parse(String.format("%s-%s-%s", year, month, day));
+    public void setEventDate(String date) {
+        this.eventDate = LocalDate.parse(date, formatter);
     }
 
     public String toString() {

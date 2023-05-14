@@ -18,6 +18,11 @@ public class RestController {
 
     Logger logger = LoggerFactory.getLogger(RestController.class);
 
+    /**
+     * ATTENTION ping returns code 418 IMATEAPOT
+     *
+     * @return
+     */
     @GetMapping("/ping")
     @ResponseStatus(HttpStatus.I_AM_A_TEAPOT)
     public String ping() {
@@ -45,16 +50,14 @@ public class RestController {
         return service.get(eventId);
     }
 
-    // TODO rename this mapping to new after "new" mapping has been removed
-    @PostMapping("/json-new")
+    @PostMapping(value = "/new", produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.CREATED)
     public Event createEvent(@RequestBody Event event) {
         logger.info("----- POST Request: json-new, body:" + event);
         return service.save(event);
     }
 
-    // TODO remove this mapping
-    @PostMapping("/new")
+    @PostMapping(value = "/new-simple", produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.CREATED)
     public Event createEvent(@RequestParam(name = "date", required = true) String date,
                              @RequestParam(name = "title", required = true) String title,
@@ -72,7 +75,6 @@ public class RestController {
         service.delete(eventId);
     }
 
-    // TODO rework this method, does it make sense to set id for given event? or can event already contain the id?
     @PutMapping("/event/{id}/update")
     @ResponseStatus(HttpStatus.OK)
     public void update(@PathVariable Long id, @RequestBody Event event) {
