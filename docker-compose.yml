@@ -1,0 +1,41 @@
+# DOCKER COMPOSE FOR DATEKEEPER
+# Deploys datekeeber-backend and postgresql:14
+version: "3.9"
+
+services:
+  db:
+    container_name: datekeeper-postgres
+    hostname: dk-postgres
+    image: postgres:14
+    restart: unless-stopped
+    environment:
+      - POSTGRES_PASSWORD=aaa
+      - POSTGRES_USER=aaa
+      - POSTGRES_DB=proj
+    volumes:
+      - datekeeper-db:/var/lib/postgresql/data
+    networks:
+      int-net:
+    expose:
+      - 5432
+
+  app:
+    container_name: datekeeper-backend
+    image: datekeeper-backend:latest
+    expose:
+      - 8080
+    networks:
+      int-net:
+      default:
+
+volumes:
+  datekeeper-db:
+
+networks:
+  #  default:
+  #    external: true
+  #    name: int-docker-net
+  int-net:
+  # route to localhost
+  default:
+    driver: bridge
