@@ -2,6 +2,10 @@
 
 Semesterprojekt in dem Kurs Webtechnologien, Sommersemester 2023.
 
+## Frontend
+
+Das Frontend ist in diesem Repository zu finden [c-jaenicke/datekeeper-frontend](https://github.com/c-jaenicke/datekeeper-frontend)
+
 ## Teilnehmer
 
 - Christoph Nicklas Jänicke
