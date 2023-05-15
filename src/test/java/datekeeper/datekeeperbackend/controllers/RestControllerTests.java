@@ -12,6 +12,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.json.JsonMapper;
 import com.fasterxml.jackson.datatype.jsr310.*;
 import datekeeper.datekeeperbackend.modells.Event;
+import org.junit.Ignore;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,12 +24,12 @@ import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
 import java.util.ArrayList;
-
 @SpringBootTest
 @AutoConfigureMockMvc
 public class RestControllerTests {
     @Autowired
     private MockMvc mockMvc;
+
 
     @Test
     @DisplayName("Get ping endpoint, expect 418")
@@ -39,6 +40,7 @@ public class RestControllerTests {
                 .andExpect(content().string(containsString("pong")));
     }
 
+
     @Test
     @DisplayName("Get events without specifying an even id. expect 404")
     public void noEventTest() throws Exception {
@@ -46,6 +48,7 @@ public class RestControllerTests {
                 .andDo(print())
                 .andExpect(status().isNotFound());
     }
+
 
     @Test
     @DisplayName("Create a new event using the /new endpoint with an event in body, formatted as json")
@@ -59,6 +62,7 @@ public class RestControllerTests {
                 .andExpect(status().isCreated());
     }
 
+
     @Test
     @DisplayName("Get all events")
     public void getEvents() throws Exception {
@@ -68,6 +72,7 @@ public class RestControllerTests {
                 .andExpect(content().string(containsString("TEST EVENT TITLE")));
     }
 
+    
     @Test
     @DisplayName("Get all events, find 'TEST EVENT TITLE' event and delete it")
     public void deleteEvent() throws Exception {
