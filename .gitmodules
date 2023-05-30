@@ -1,0 +1,4 @@
+[submodule "datekeeper-frontend"]
+	path = datekeeper-frontend
+        url = git@github.com:c-jaenicke/datekeeper-frontend.git
+        branch = main
