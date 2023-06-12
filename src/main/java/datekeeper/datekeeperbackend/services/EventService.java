@@ -3,6 +3,7 @@ package datekeeper.datekeeperbackend.services;
 import datekeeper.datekeeperbackend.modells.Event;
 import datekeeper.datekeeperbackend.repositories.EventRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -63,7 +64,7 @@ public class EventService {
      * @return List<Event>
      */
     public List<Event> getAll() {
-        Iterable<Event> iter = eventRepository.findAll();
+        Iterable<Event> iter = eventRepository.findAll(Sort.by(Sort.Direction.ASC, "eventDate"));
         List<Event> events = new ArrayList<Event>();
         iter.forEach(events::add);
         return events;

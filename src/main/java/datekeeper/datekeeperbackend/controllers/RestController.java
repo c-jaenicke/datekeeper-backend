@@ -53,9 +53,10 @@ public class RestController {
 
     @PostMapping(value = "/new", produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.CREATED)
-    public Event createEvent(@RequestBody Event event) {
+    public List<Event> createEvent(@RequestBody Event event) {
         logger.info("----- POST Request: json-new, body:" + event);
-        return service.save(event);
+        service.save(event);
+        return service.getAll();
     }
 
     @PostMapping(value = "/new-simple", produces = MediaType.APPLICATION_JSON_VALUE)
@@ -69,11 +70,12 @@ public class RestController {
     }
 
     @DeleteMapping(value = "/event/{id}/delete", produces = MediaType.APPLICATION_JSON_VALUE)
-    @ResponseStatus(value = HttpStatus.OK, reason = "Event successfully deleted")
-    public void delete(@PathVariable String id) {
+    @ResponseStatus(value = HttpStatus.OK)
+    public List<Event> delete(@PathVariable String id) {
         Long eventId = Long.parseLong(id);
         logger.info("----- DELETE Request: deleting event with it " + id);
         service.delete(eventId);
+        return service.getAll();
     }
 
     @PutMapping("/event/{id}/update")
