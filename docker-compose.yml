@@ -6,7 +6,7 @@ services:
   db:
     container_name: datekeeper-postgres
     hostname: dk-postgres
-    image: postgres:14
+    image: postgres:15
     restart: unless-stopped
     environment:
       - POSTGRES_PASSWORD=aaa
@@ -15,18 +15,33 @@ services:
     volumes:
       - datekeeper-db:/var/lib/postgresql/data
     networks:
-      int-net:
+      default:
+      #int-net:
     expose:
       - 5432
 
   app:
     container_name: datekeeper-backend
+    hostname: dk-backend
     image: datekeeper-backend:latest
     expose:
       - 8080
+    ports:
+      - 8080:8080
     networks:
-      int-net:
+     # int-net:
       default:
+
+  frondent:
+    container_name: datekeeper-frontend
+    image: datekeeper-frontend:latest
+    expose:
+      - 80
+    ports:
+      - 80:80
+    networks:
+      default:
+     # int-net:
 
 volumes:
   datekeeper-db:
