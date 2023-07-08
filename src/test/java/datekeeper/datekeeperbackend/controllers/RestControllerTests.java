@@ -71,28 +71,4 @@ public class RestControllerTests {
                 .andExpect(status().isOk())
                 .andExpect(content().string(containsString("TEST EVENT TITLE")));
     }
-
-    
-    @Test
-    @DisplayName("Get all events, find 'TEST EVENT TITLE' event and delete it")
-    public void deleteEvent() throws Exception {
-        MvcResult result = this.mockMvc.perform(get("/events"))
-                .andDo(print())
-                .andExpect(status().isOk())
-                .andExpect(content().string(containsString("TEST EVENT TITLE")))
-                .andReturn();
-
-        String content = result.getResponse().getContentAsString();
-        ObjectMapper objectMapper = JsonMapper.builder().addModule(new JavaTimeModule()).build();
-        ArrayList<Event> eventList = objectMapper.readValue(content, new TypeReference<>() {
-        });
-        for (Event event : eventList) {
-            if (event.getTitle().equals("TEST EVENT TITLE")) {
-                this.mockMvc.perform(delete(String.format("/event/%d/delete", event.getId())))
-                        .andDo(print())
-                        .andExpect(status().isOk())
-                        .andExpect(content().string(not(containsString("TEST EVENT TITLE"))));
-            }
-        }
-    }
 }

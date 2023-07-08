@@ -12,8 +12,8 @@ public class WebConfig implements WebMvcConfigurer {
     public void addCorsMappings(CorsRegistry registry) {
         registry.addMapping("/**")
                 .allowedMethods("*")
-                .allowedOrigins("http://localhost:80",
-                        "192.168.16.3",
-                        "https://dk.crsrv.de");
+                // TODO before deployment set allowed origins here
+                // All origins are allowed for testing
+                .allowedOrigins("*");
     }
 }

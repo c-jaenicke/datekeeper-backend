@@ -26,3 +26,5 @@ gradle-app.setting
 # h2 database
 *.mv.db
 *.trace.db
+
+.notes.txt
