@@ -6,8 +6,6 @@ Semesterprojekt in dem Kurs Webtechnologien, Sommersemester 2023.
 
 Das Frontend ist in diesem Repository zu finden [c-jaenicke/datekeeper-frontend](https://github.com/c-jaenicke/datekeeper-frontend)
 
-Das Frontend ist als submodule in diesem Repository enthalten. Nutze `git clone --recursive <REPO>`
-
 ## Teilnehmer
 
 - Christoph Nicklas Jänicke
@@ -15,7 +13,7 @@ Das Frontend ist als submodule in diesem Repository enthalten. Nutze `git clone 
 
 ## Idee
 
-Ein Kalender zum eintragen von Terminen und Events.
+Ein Kalender zum Eintragen von Terminen und Events.
 
 ## REST Mappings
 
@@ -31,7 +29,3 @@ Ein Kalender zum eintragen von Terminen und Events.
 ```
 
 Stand 11.06.2023
-
-## TESTING
-
-In der `./src/main/resources/` den Pfad der H2 Datenbank anpassen!
